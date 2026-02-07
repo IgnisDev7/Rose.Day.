@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day Shreya ??</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffd6e8, #ffb6c1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 360px;
+    padding: 30px 20px;
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(231, 84, 128, 0.35);
+    animation: pop 0.8s ease;
+    z-index: 2;
+}
+
+@keyframes pop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+h1 {
+    color: #e75480;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+button {
+    margin-top: 22px;
+    padding: 12px 26px;
+    border: none;
+    border-radius: 30px;
+    background: #e75480;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.fall {
+    position: absolute;
+    top: -40px;
+    font-size: 22px;
+    animation: fall linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1 id="title">Happy Rose Day ??</h1>
+    <p id="msg">
+        Dear <b>Shreya</b>,<br>
+        This rose is just for you,<br>
+        to make your day a little brighter ??
+    </p>
+    <button id="btn" onclick="startMagic()">A Rose for You ??</button>
+</div>
+
+<script>
+let clicked = false;
+
+function startMagic() {
+
+    if (!clicked) {
+        document.getElementById("title").innerText = "For You, Shreya ??";
+        document.getElementById("msg").innerHTML =
+            "Some flowers fade,<br>but your smile makes everything beautiful ??";
+        document.getElementById("btn").innerText = "Keep Smiling ??";
+        clicked = true;
+    }
+
+    for (let i = 0; i < 30; i++) {
+        let item = document.createElement("div");
+        item.className = "fall";
+
+        /* ?? and ?? — NO QUESTION MARK ISSUE */
+        item.innerHTML = Math.random() > 0.5 ? "&#127801;" : "&#128151;";
+
+        item.style.left = Math.random() * 100 + "vw";
+        item.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+        document.body.appendChild(item);
+
+        setTimeout(() => {
+            item.remove();
+        }, 6000);
+    }
+}
+</script>
+
+</body>
+</html>
